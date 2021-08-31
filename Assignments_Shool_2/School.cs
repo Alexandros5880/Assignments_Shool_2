@@ -23,21 +23,6 @@ namespace Assignments_Shool_2
             this.Students = new List<Student>();
         }
 
-        public bool AddCourse()
-        {
-            try
-            {
-                Console.Write("Course Name: ");
-                string name = Console.ReadLine();
-                Course course = new Course(name, this.Courses.Count);
-                this.Courses.Add(course);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
         public bool DeleteCourse()
         {
             try
@@ -65,6 +50,81 @@ namespace Assignments_Shool_2
         }
 
 
+        // Import
+        #region "Import Course"
+        public bool AddCourse()
+        {
+            Console.WriteLine("Import a Course:");
+            try
+            {
+                Console.Write("Course Name: ");
+                string name = Console.ReadLine();
+                Course course = new Course(name, this.Courses.Count);
+                this.Courses.Add(course);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+        #region "Import Assignment"
+        public bool AddAssignment()
+        {
+            Console.WriteLine("Import an Assignment:");
+            try
+            {
+                Console.Write("Assignment Name: ");
+                string name = Console.ReadLine();
+                Assignment assignment = new Assignment(name, this.Assignments.Count);
+                this.Assignments.Add(assignment);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+        #region "Import Trainer"
+        public bool AddTrainer()
+        {
+            Console.WriteLine("Import Trainer:");
+            try
+            {
+                Console.Write("Trainer Name: ");
+                string name = Console.ReadLine();
+                Trainer trainer = new Trainer(name, this.Trainers.Count);
+                this.Trainers.Add(trainer);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+        #region "Import Student"
+        public bool AddStudent()
+        {
+            Console.WriteLine("Import Stuednt:");
+            try
+            {
+                Console.Write("Student Name: ");
+                string name = Console.ReadLine();
+                Student student = new Student(name, this.Students.Count);
+                this.Students.Add(student);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        // Export
         #region "Get Students How Need To Submit One Ore More Assignments On The Same Week"
         public void PrintStudentsWithAssSameWeek()
         {

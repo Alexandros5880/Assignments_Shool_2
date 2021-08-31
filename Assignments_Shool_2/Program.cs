@@ -26,17 +26,17 @@ namespace Assignments_Shool_2
                     Console.WriteLine("\n");
                     switch (choice)
                     {
-                        case "c": // Course
-                            
+                        case "c":
+                            school.AddCourse();
                             break;
-                        case "a": // Assignments
-                            
+                        case "a":
+                            school.AddAssignment();
                             break;
-                        case "t": // Trainers
-                            
+                        case "t":
+                            school.AddTrainer();
                             break;
-                        case "s": // Students
-                            
+                        case "s":
+                            school.AddStudent();
                             break;
                         default:
                             Console.WriteLine("Enter a Valid Choice.");
