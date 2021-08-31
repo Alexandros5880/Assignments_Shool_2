@@ -9,6 +9,7 @@ namespace Assignments_Shool_2
     class Course
     {
         public int Id { get; set; }
+        public School school { get; set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -16,10 +17,11 @@ namespace Assignments_Shool_2
         public List<Student> Students { get; set; }
         public List<Assignment> Assignments { get; set; }
 
-        public Course(string name, int id)
+        public Course(string name, int id, School school)
         {
             this.Name = name;
             this.Id = id;
+            this.school = school;
             this.Trainers = new List<Trainer>();
             this.Students = new List<Student>();
             this.Assignments = new List<Assignment>();
@@ -89,10 +91,127 @@ namespace Assignments_Shool_2
                     switch (choice)
                     {
                         case "a":
+                            Console.WriteLine("Add Assignment(a) ? Remove Assignment(r)");
+                            choice = Console.ReadLine();
+                            Assignment assignment;
+                            switch (choice)
+                            {
+                                case "a": // Add Assignment
+                                    Console.WriteLine("Select Assignment By Id:");
+                                    this.school.PrintAssignments();
+                                    int id = int.Parse(Console.ReadLine());
+                                    assignment = this.school.GetAssignment(id);
+                                    if (!this.Assignments.Contains(assignment))
+                                    {
+                                        this.Assignments.Add(assignment);
+                                        Console.WriteLine("Annsginment added succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Assignment Exists!");
+                                    }
+                                    break;
+                                case "r": // Remove Assignment
+                                    Console.WriteLine("Select Assignment By Id:");
+                                    this.school.PrintAssignments();
+                                    id = int.Parse(Console.ReadLine());
+                                    assignment = this.school.GetAssignment(id);
+                                    if (this.Assignments.Contains(assignment))
+                                    {
+                                        this.Assignments.Remove(assignment);
+                                        Console.WriteLine("Annsginment removed succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Assignment Not Exists!");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter a valid choice!");
+                                    break;
+                            }
                             break;
                         case "t":
+                            Console.WriteLine("Add Trainer(a) ? Remove Trainer(r)");
+                            choice = Console.ReadLine();
+                            Trainer trainer;
+                            switch (choice)
+                            {
+                                case "a": // Add Trainer
+                                    Console.WriteLine("Select Trainer By Id:");
+                                    this.school.PrintTrainers();
+                                    int id = int.Parse(Console.ReadLine());
+                                    trainer = this.school.GetTrainer(id);
+                                    if (!this.Trainers.Contains(trainer))
+                                    {
+                                        this.Trainers.Add(trainer);
+                                        Console.WriteLine("Trainer added succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Trainer Exists!");
+                                    }
+                                    break;
+                                case "r": // Remove Trainer
+                                    Console.WriteLine("Select Trainer By Id:");
+                                    this.school.PrintTrainers();
+                                    id = int.Parse(Console.ReadLine());
+                                    trainer = this.school.GetTrainer(id);
+                                    if (this.Trainers.Contains(trainer))
+                                    {
+                                        this.Trainers.Remove(trainer);
+                                        Console.WriteLine("Trainer removed succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Trainer Not Exists!");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter a valid choice!");
+                                    break;
+                            }
                             break;
                         case "s":
+                            Console.WriteLine("Add Student(a) ? Remove Student(r)");
+                            choice = Console.ReadLine();
+                            Student student;
+                            switch (choice)
+                            {
+                                case "a": // Add Student
+                                    Console.WriteLine("Select Student By Id:");
+                                    this.school.PrintStudents();
+                                    int id = int.Parse(Console.ReadLine());
+                                    student = this.school.GetStudent(id);
+                                    if (!this.Students.Contains(student))
+                                    {
+                                        this.Students.Add(student);
+                                        Console.WriteLine("Student added succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Student Exists!");
+                                    }
+                                    break;
+                                case "r": // Remove Student
+                                    Console.WriteLine("Select Student By Id:");
+                                    this.school.PrintStudents();
+                                    id = int.Parse(Console.ReadLine());
+                                    student = this.school.GetStudent(id);
+                                    if (this.Students.Contains(student))
+                                    {
+                                        this.Students.Remove(student);
+                                        Console.WriteLine("Student removed succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Student Not Exists!");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter a valid choice!");
+                                    break;
+                            }
                             break;
                         default:
                             Console.WriteLine("Enter a valid choice!");
@@ -104,7 +223,6 @@ namespace Assignments_Shool_2
                     break;
             }
         }
-
         public void PrintAssignments()
         {
             foreach(Assignment ass in this.Assignments)

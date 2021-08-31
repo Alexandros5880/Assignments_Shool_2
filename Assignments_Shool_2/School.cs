@@ -59,7 +59,7 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Course Name: ");
                 string name = Console.ReadLine();
-                Course course = new Course(name, this.Courses.Count);
+                Course course = new Course(name, this.Courses.Count, this);
                 this.Courses.Add(course);
                 return true;
             }
@@ -222,6 +222,12 @@ namespace Assignments_Shool_2
             }
         }
         #endregion
+        #region "Get Student By Id"
+        public Student GetStudent(int id)
+        {
+            return (from s in this.Students where s.Id == id select s).FirstOrDefault();
+        }
+        #endregion
         #region "Get All Trainers"
         public void PrintTrainers()
         {
@@ -232,6 +238,12 @@ namespace Assignments_Shool_2
             }
         }
         #endregion
+        #region "Get Trainer By Id"
+        public Trainer GetTrainer(int id)
+        {
+            return (from t in this.Trainers where t.Id == id select t).FirstOrDefault();
+        }
+        #endregion
         #region "Get All Assignments"
         public void PrintAssignments()
         {
@@ -240,6 +252,12 @@ namespace Assignments_Shool_2
             {
                 Console.WriteLine(ass.ToString());
             }
+        }
+        #endregion
+        #region "Get Assignment By Id"
+        public Assignment GetAssignment(int id)
+        {
+            return (from a in this.Assignments where a.Id == id select a).FirstOrDefault();
         }
         #endregion
         #region "Get All Courses"
