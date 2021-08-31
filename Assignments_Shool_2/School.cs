@@ -286,7 +286,17 @@ namespace Assignments_Shool_2
             this.PrintCourses();
             int id = int.Parse(Console.ReadLine());
             Course course = (from c in this.Courses where c.Id == id select c).FirstOrDefault();
-            course.Edit();
+            Console.Write("Edit(e) ? Delete(d): ");
+            string choice = Console.ReadLine();
+            switch(choice)
+            {
+                case "e":
+                    this.Courses.Remove(course);
+                    break;
+                case "d":
+                    course.Edit();
+                    break;
+            }
         }
         #endregion
         #region "Edit Assignment"
@@ -297,7 +307,17 @@ namespace Assignments_Shool_2
             this.PrintAssignments();
             int id = int.Parse(Console.ReadLine());
             Assignment assignment = (from a in this.Assignments where a.Id == id select a).FirstOrDefault();
-            assignment.Edit();
+            Console.Write("Edit(e) ? Delete(d): ");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "e":
+                    this.Assignments.Remove(assignment);
+                    break;
+                case "d":
+                    assignment.Edit();
+                    break;
+            }
         }
         #endregion
         #region "Edit Trainer"
@@ -308,7 +328,17 @@ namespace Assignments_Shool_2
             this.PrintTrainers();
             int id = int.Parse(Console.ReadLine());
             Trainer trainer = (from t in this.Trainers where t.Id == id select t).FirstOrDefault();
-            trainer.Edit();
+            Console.Write("Edit(e) ? Delete(d): ");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "e":
+                    this.Trainers.Remove(trainer);
+                    break;
+                case "d":
+                    trainer.Edit();
+                    break;
+            }
         }
         #endregion
         #region "Edit Student"
@@ -319,7 +349,17 @@ namespace Assignments_Shool_2
             this.PrintStudents();
             int id = int.Parse(Console.ReadLine());
             Student student = (from s in this.Students where s.Id == id select s).FirstOrDefault();
-            student.Edit();
+            Console.Write("Edit(e) ? Delete(d): ");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "e":
+                    this.Students.Remove(student);
+                    break;
+                case "d":
+                    student.Edit();
+                    break;
+            }
         }
         #endregion
     }
