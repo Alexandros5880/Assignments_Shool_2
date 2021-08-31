@@ -16,7 +16,6 @@ namespace Assignments_Shool_2
                 Console.WriteLine("Import(i) ? Export(e) ? Edit(ed) ? Quit(q):");
                 string choice = Console.ReadLine();
                 Console.WriteLine("\n");
-
                 // Importing
                 if (choice.Equals("i") || choice.Equals("Import"))
                 {
@@ -109,16 +108,16 @@ namespace Assignments_Shool_2
                     switch (choice)
                     {
                         case "c":
-                            //Course.TerminalEdit();
+                            school.EditCourse();
                             break;
                         case "a":
-                            //Assignment.TerminalEdit();
+                            school.EditAssignment();
                             break;
                         case "t":
-                            //Trainer.TerminalEdit();
+                            school.EditTrainer();
                             break;
                         case "s":
-                            //Student.TerminalEdit();
+                            school.EditStudent();
                             break;
                         default:
                             Console.WriteLine("Enter a Valid Choice!");

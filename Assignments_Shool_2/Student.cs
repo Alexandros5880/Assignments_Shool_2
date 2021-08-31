@@ -11,7 +11,6 @@ namespace Assignments_Shool_2
         public int Id { get; set; }
         public String Name { get; set; }
         public List<Assignment> Assignments { get; set; }
-
         public List<Course> Courses { get; set; }
 
         public Student(string name, int id)
@@ -22,6 +21,45 @@ namespace Assignments_Shool_2
             this.Courses = new List<Course>();
         }
 
+        public void Edit()
+        {
+            Console.WriteLine("Main Imfo(m) ? Related Data(r):");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "m":
+                    Console.WriteLine("Edit Name:");
+                    Console.Write("Enter a new name: ");
+                    string name = Console.ReadLine();
+                    if(name.Length > 3)
+                    {
+                        this.Name = name;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter a valid name!");
+                    }
+                    break;
+                case "r":
+                    Console.WriteLine("Edit Assignments(a) ? Courses(c):");
+                    choice = Console.ReadLine();
+                    switch (choice)
+                    {
+                        case "a":
+                            break;
+                        case "c":
+                            break;
+                        default:
+                            Console.WriteLine("Enter a valid choice!");
+                            break;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Enter a valid choice!");
+                    break;
+            }
+        }
+
         public void PrintCourses()
         {
             foreach (Course course in this.Courses)
@@ -29,7 +67,6 @@ namespace Assignments_Shool_2
                 Console.WriteLine(course.ToString());
             }
         }
-
         public void PrintAssignments()
         {
             foreach (Assignment ass in this.Assignments)
@@ -37,7 +74,6 @@ namespace Assignments_Shool_2
                 Console.WriteLine(ass.ToString());
             }
         }
-
         public override string ToString()
         {
             return $"Student: [ID: {this.Id}]  Name: {this.Name}";

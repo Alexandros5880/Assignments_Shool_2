@@ -252,5 +252,51 @@ namespace Assignments_Shool_2
             }
         }
         #endregion
+
+        // Edit
+        #region "Edit Course"
+        public void EditCourse()
+        {
+            Console.WriteLine("Edit Course:");
+            Console.WriteLine("Select course by id:");
+            this.PrintCourses();
+            int id = int.Parse(Console.ReadLine());
+            Course course = (from c in this.Courses where c.Id == id select c).FirstOrDefault();
+            course.Edit();
+        }
+        #endregion
+        #region "Edit Assignment"
+        public void EditAssignment()
+        {
+            Console.WriteLine("Edit Assignment:");
+            Console.WriteLine("Select assignment by id:");
+            this.PrintAssignments();
+            int id = int.Parse(Console.ReadLine());
+            Assignment assignment = (from a in this.Assignments where a.Id == id select a).FirstOrDefault();
+            assignment.Edit();
+        }
+        #endregion
+        #region "Edit Trainer"
+        public void EditTrainer()
+        {
+            Console.WriteLine("Edit Trainer:");
+            Console.WriteLine("Select trainer by id:");
+            this.PrintTrainers();
+            int id = int.Parse(Console.ReadLine());
+            Trainer trainer = (from t in this.Trainers where t.Id == id select t).FirstOrDefault();
+            trainer.Edit();
+        }
+        #endregion
+        #region "Edit Student"
+        public void EditStudent()
+        {
+            Console.WriteLine("Edit Student:");
+            Console.WriteLine("Select student by id:");
+            this.PrintStudents();
+            int id = int.Parse(Console.ReadLine());
+            Student student = (from s in this.Students where s.Id == id select s).FirstOrDefault();
+            student.Edit();
+        }
+        #endregion
     }
 }

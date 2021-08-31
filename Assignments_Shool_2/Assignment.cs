@@ -22,6 +22,48 @@ namespace Assignments_Shool_2
             this.EndDate = end.AddMonths(-1);
         }
 
+        public void Edit()
+        {
+            Console.WriteLine("Main Imfo(m) ? Related Data(r):");
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "m":
+                    Console.WriteLine("Edit Name(n) ? StartDate(sd) ? EndDate(ed):");
+                    choice = Console.ReadLine();
+                    switch (choice)
+                    {
+                        case "n":
+                            Console.WriteLine("Edit Name:");
+                            Console.Write("Enter a new name: ");
+                            string name = Console.ReadLine();
+                            if (name.Length > 3)
+                            {
+                                this.Name = name;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter a valid name!");
+                            }
+                            break;
+                        case "sd":
+                            break;
+                        case "ed":
+                            break;
+                        default:
+                            Console.WriteLine("Enter a valid choice!");
+                            break;
+                    }
+                    break;
+                case "r":
+                    Console.WriteLine("Edit Assignments:");
+                    break;
+                default:
+                    Console.WriteLine("Enter a valid choice!");
+                    break;
+            }
+        }
+
         public override string ToString()
         {
             return $"Assignment: [ID: {this.Id}] {this.Name} StartDate: {this.StartDate} LastDate: {this.EndDate}";
