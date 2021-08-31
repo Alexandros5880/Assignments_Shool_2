@@ -47,16 +47,15 @@ namespace Assignments_Shool_2
                     switch (choice)
                     {
                         case "a":
+                            Console.WriteLine("Select Assignment By Id:");
+                            this.school.PrintAssignments();
+                            int id = int.Parse(Console.ReadLine());
+                            Assignment assignment = this.school.GetAssignment(id);
                             Console.WriteLine("Add Assignment(a) ? Remove Assignment(r)");
                             choice = Console.ReadLine();
-                            Assignment assignment;
                             switch (choice)
                             {
                                 case "a": // Add Assignment
-                                    Console.WriteLine("Select Assignment By Id:");
-                                    this.school.PrintAssignments();
-                                    int id = int.Parse(Console.ReadLine());
-                                    assignment = this.school.GetAssignment(id);
                                     if (!this.Assignments.Contains(assignment))
                                     {
                                         this.Assignments.Add(assignment);
@@ -68,10 +67,6 @@ namespace Assignments_Shool_2
                                     }
                                     break;
                                 case "r": // Remove Assignment
-                                    Console.WriteLine("Select Assignment By Id:");
-                                    this.school.PrintAssignments();
-                                    id = int.Parse(Console.ReadLine());
-                                    assignment = this.school.GetAssignment(id);
                                     if (this.Assignments.Contains(assignment))
                                     {
                                         this.Assignments.Remove(assignment);
@@ -88,16 +83,15 @@ namespace Assignments_Shool_2
                             }
                             break;
                         case "c":
+                            Console.WriteLine("Select Course By Id:");
+                            this.school.PrintCourses();
+                            id = int.Parse(Console.ReadLine());
+                            Course course = this.school.GetCourse(id);
                             Console.WriteLine("Add Course(a) ? Remove Course(r)");
                             choice = Console.ReadLine();
-                            Course course;
                             switch (choice)
                             {
                                 case "a": // Add Course
-                                    Console.WriteLine("Select Course By Id:");
-                                    this.school.PrintCourses();
-                                    int id = int.Parse(Console.ReadLine());
-                                    course = this.school.GetCourse(id);
                                     if (!this.Courses.Contains(course))
                                     {
                                         this.Courses.Add(course);
@@ -109,10 +103,6 @@ namespace Assignments_Shool_2
                                     }
                                     break;
                                 case "r": // Remove Course
-                                    Console.WriteLine("Select Course By Id:");
-                                    this.school.PrintCourses();
-                                    id = int.Parse(Console.ReadLine());
-                                    course = this.school.GetCourse(id);
                                     if (this.Courses.Contains(course))
                                     {
                                         this.Courses.Remove(course);
