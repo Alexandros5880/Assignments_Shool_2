@@ -77,7 +77,7 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Assignment Name: ");
                 string name = Console.ReadLine();
-                Assignment assignment = new Assignment(name, this.Assignments.Count);
+                Assignment assignment = new Assignment(name, this.Assignments.Count, this);
                 this.Assignments.Add(assignment);
                 return true;
             }
@@ -95,7 +95,7 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Trainer Name: ");
                 string name = Console.ReadLine();
-                Trainer trainer = new Trainer(name, this.Trainers.Count);
+                Trainer trainer = new Trainer(name, this.Trainers.Count, this);
                 this.Trainers.Add(trainer);
                 return true;
             }
@@ -113,7 +113,7 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Student Name: ");
                 string name = Console.ReadLine();
-                Student student = new Student(name, this.Students.Count);
+                Student student = new Student(name, this.Students.Count, this);
                 this.Students.Add(student);
                 return true;
             }
@@ -268,6 +268,12 @@ namespace Assignments_Shool_2
             {
                 Console.WriteLine(cr.ToString());
             }
+        }
+        #endregion
+        #region "Get Course By Id"
+        public Course GetCourse(int id)
+        {
+            return (from c in this.Courses where c.Id == id select c).FirstOrDefault();
         }
         #endregion
 

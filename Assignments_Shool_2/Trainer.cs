@@ -9,14 +9,15 @@ namespace Assignments_Shool_2
     class Trainer
     {
         public int Id { get; set; }
+        public School school { get; set; }
         public String Name { get; set; }
 
-        public Trainer(string name, int id)
+        public Trainer(string name, int id, School school)
         {
             this.Name = name;
             this.Id = id;
+            this.school = school;
         }
-
         public void Edit()
         {
             Console.WriteLine("Edit Name:");

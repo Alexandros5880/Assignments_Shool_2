@@ -29,7 +29,6 @@ namespace Assignments_Shool_2
             DateTime end = DateTime.Today;
             this.EndDate = end.AddMonths(-1);
         }
-
         public void Edit()
         {
             Console.WriteLine("Main Imfo(m) ? Related Data(r):");

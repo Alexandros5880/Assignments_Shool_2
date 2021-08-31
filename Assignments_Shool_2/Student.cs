@@ -9,18 +9,19 @@ namespace Assignments_Shool_2
     class Student
     {
         public int Id { get; set; }
+        public School school { get; set; }
         public String Name { get; set; }
         public List<Assignment> Assignments { get; set; }
         public List<Course> Courses { get; set; }
 
-        public Student(string name, int id)
+        public Student(string name, int id, School school)
         {
             this.Name = name;
             this.Id = id;
+            this.school = school;
             this.Assignments = new List<Assignment>();
             this.Courses = new List<Course>();
         }
-
         public void Edit()
         {
             Console.WriteLine("Main Imfo(m) ? Related Data(r):");
@@ -46,8 +47,86 @@ namespace Assignments_Shool_2
                     switch (choice)
                     {
                         case "a":
+                            Console.WriteLine("Add Assignment(a) ? Remove Assignment(r)");
+                            choice = Console.ReadLine();
+                            Assignment assignment;
+                            switch (choice)
+                            {
+                                case "a": // Add Assignment
+                                    Console.WriteLine("Select Assignment By Id:");
+                                    this.school.PrintAssignments();
+                                    int id = int.Parse(Console.ReadLine());
+                                    assignment = this.school.GetAssignment(id);
+                                    if (!this.Assignments.Contains(assignment))
+                                    {
+                                        this.Assignments.Add(assignment);
+                                        Console.WriteLine("Annsginment added succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Assignment Exists!");
+                                    }
+                                    break;
+                                case "r": // Remove Assignment
+                                    Console.WriteLine("Select Assignment By Id:");
+                                    this.school.PrintAssignments();
+                                    id = int.Parse(Console.ReadLine());
+                                    assignment = this.school.GetAssignment(id);
+                                    if (this.Assignments.Contains(assignment))
+                                    {
+                                        this.Assignments.Remove(assignment);
+                                        Console.WriteLine("Annsginment removed succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Assignment Not Exists!");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter a valid choice!");
+                                    break;
+                            }
                             break;
                         case "c":
+                            Console.WriteLine("Add Course(a) ? Remove Course(r)");
+                            choice = Console.ReadLine();
+                            Course course;
+                            switch (choice)
+                            {
+                                case "a": // Add Course
+                                    Console.WriteLine("Select Course By Id:");
+                                    this.school.PrintCourses();
+                                    int id = int.Parse(Console.ReadLine());
+                                    course = this.school.GetCourse(id);
+                                    if (!this.Courses.Contains(course))
+                                    {
+                                        this.Courses.Add(course);
+                                        Console.WriteLine("Course added succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Course Exists!");
+                                    }
+                                    break;
+                                case "r": // Remove Course
+                                    Console.WriteLine("Select Course By Id:");
+                                    this.school.PrintCourses();
+                                    id = int.Parse(Console.ReadLine());
+                                    course = this.school.GetCourse(id);
+                                    if (this.Courses.Contains(course))
+                                    {
+                                        this.Courses.Remove(course);
+                                        Console.WriteLine("Course removed succesfully!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Course Not Exists!");
+                                    }
+                                    break;
+                                default:
+                                    Console.WriteLine("Enter a valid choice!");
+                                    break;
+                            }
                             break;
                         default:
                             Console.WriteLine("Enter a valid choice!");
@@ -59,7 +138,6 @@ namespace Assignments_Shool_2
                     break;
             }
         }
-
         public void PrintCourses()
         {
             foreach (Course course in this.Courses)
