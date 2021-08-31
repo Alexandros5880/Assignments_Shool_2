@@ -209,23 +209,44 @@ namespace Assignments_Shool_2
         }
         public void PrintAssignments()
         {
-            foreach(Assignment ass in this.Assignments)
+            if(this.Assignments.Count > 0)
             {
-                Console.WriteLine(ass.ToString());
+                foreach (Assignment ass in this.Assignments)
+                {
+                    Console.WriteLine(ass.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEmpty\n");
             }
         }
         public void PrintStudents()
         {
-            foreach (Student st in this.Students)
+            if(this.Students.Count > 0)
             {
-                Console.WriteLine(st.ToString());
+                foreach (Student st in this.Students)
+                {
+                    Console.WriteLine(st.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEmpty\n");
             }
         }
         public void PrintTrainers()
         {
-            foreach (Trainer tr in this.Trainers)
+            if(this.Trainers.Count > 0)
             {
-                Console.WriteLine(tr.ToString());
+                foreach (Trainer tr in this.Trainers)
+                {
+                    Console.WriteLine(tr.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEmpty\n");
             }
         }
         public override string ToString()

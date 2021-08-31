@@ -291,10 +291,10 @@ namespace Assignments_Shool_2
             switch(choice)
             {
                 case "e":
-                    this.Courses.Remove(course);
+                    course.Edit();
                     break;
                 case "d":
-                    course.Edit();
+                    this.Courses.Remove(course);
                     break;
             }
         }
@@ -312,10 +312,10 @@ namespace Assignments_Shool_2
             switch (choice)
             {
                 case "e":
-                    this.Assignments.Remove(assignment);
+                    assignment.Edit();
                     break;
                 case "d":
-                    assignment.Edit();
+                    this.Assignments.Remove(assignment);
                     break;
             }
         }
@@ -333,10 +333,10 @@ namespace Assignments_Shool_2
             switch (choice)
             {
                 case "e":
-                    this.Trainers.Remove(trainer);
+                    trainer.Edit();
                     break;
                 case "d":
-                    trainer.Edit();
+                    this.Trainers.Remove(trainer);
                     break;
             }
         }
@@ -354,10 +354,10 @@ namespace Assignments_Shool_2
             switch (choice)
             {
                 case "e":
-                    this.Students.Remove(student);
+                    student.Edit();
                     break;
                 case "d":
-                    student.Edit();
+                    this.Students.Remove(student);
                     break;
             }
         }

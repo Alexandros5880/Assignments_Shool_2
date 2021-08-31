@@ -130,16 +130,30 @@ namespace Assignments_Shool_2
         }
         public void PrintCourses()
         {
-            foreach (Course course in this.Courses)
+            if(this.Courses.Count > 0)
             {
-                Console.WriteLine(course.ToString());
+                foreach (Course course in this.Courses)
+                {
+                    Console.WriteLine(course.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEmpty\n");
             }
         }
         public void PrintAssignments()
         {
-            foreach (Assignment ass in this.Assignments)
+            if(this.Assignments.Count > 0)
             {
-                Console.WriteLine(ass.ToString());
+                foreach (Assignment ass in this.Assignments)
+                {
+                    Console.WriteLine(ass.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEmpty\n");
             }
         }
         public override string ToString()
