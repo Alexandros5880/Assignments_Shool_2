@@ -44,6 +44,14 @@ namespace Assignments_Shool_2
             }
         }
 
+        public void PrintTrainers()
+        {
+            foreach (Trainer tr in this.Trainers)
+            {
+                Console.WriteLine(tr.ToString());
+            }
+        }
+
         public override string ToString()
         {
             return $"Course: [ID: {this.Id}] {this.Name} StartDate: {this.StartDate} LastDate: {this.EndDate}";

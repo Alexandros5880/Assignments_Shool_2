@@ -80,19 +80,19 @@ namespace Assignments_Shool_2
                             school.PrintStudentsPerCourse();
                             break;
                         case "ltc":
-                            //Course.GetAllTrainersTerminal();
+                            school.PrintTrainersPerCourse();
                             break;
                         case "lac":
-                            //Course.GetAllAssignmentsTerminal();
+                            school.PrintAssignmentsPerCourse();
                             break;
                         case "las":
-                            //Student.GetAllAssignmentsTerminal();
+                            school.PrintAssignmentsPerStudent();
                             break;
                         case "lscm":
-                            //Student.GetAllStudentsThatBelongToMoreThatOneCourse();
+                            school.PrintStudentsWithMoreThanOneCourse();
                             break;
                         case "lsd":
-                            //Student.GetAllStudentsWhoNeedToSubmitAssigNmentsOnTheSameWeek();
+                            school.PrintStudentsWithAssSameWeek();
                             break;
                         default:
                             Console.WriteLine("Enter a Valid Choice.");
