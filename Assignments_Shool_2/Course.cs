@@ -28,9 +28,17 @@ namespace Assignments_Shool_2
             this.EndDate = end.AddMonths(-1);
         }
 
+        public void PrintStudents()
+        {
+            foreach (Student st in this.Students)
+            {
+                Console.WriteLine(st.ToString());
+            }
+        }
+
         public override string ToString()
         {
-            return $"Student: [ID: {this.Id}] {this.Name} StartDate: {this.StartDate} LastDate: {this.EndDate}";
+            return $"Course: [ID: {this.Id}] {this.Name} StartDate: {this.StartDate} LastDate: {this.EndDate}";
         }
     }
 }

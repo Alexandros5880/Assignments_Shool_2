@@ -4,12 +4,12 @@ it should give the option to add more than one entry at a time[10 marks].
 If the user decides not to type any data,the program should use synthetic data[5 marks].
 
 #### Also, your program must be able to output the following:
-- [ ] *A list of all the students [5 marks]*
-- [ ] *A list of all the trainers [5 marks]*
-- [ ] *A list of all the assignments [5 marks]*
-- [ ] *A list of all the courses [5 marks]*
-- [ ] *All the students per course [10 marks]*
-- [ ] *HINT:Make a new class that contains the students within a course All the trainers per course [10 marks]*
+- [x] *A list of all the students [5 marks]*
+- [x] *A list of all the trainers [5 marks]*
+- [x] *A list of all the assignments [5 marks]*
+- [x] *A list of all the courses [5 marks]*
+- [x] *All the students per course [10 marks]*
+- [x] *HINT:Make a new class that contains the students within a course All the trainers per course [10 marks]*
 - [ ] *HINT: As above All the assignments per course [10 marks]*
 - [ ] *HINT: As above All the assignments per student [10 marks]*
 - [ ] *HINT:You need to relate a student per course and per assignment

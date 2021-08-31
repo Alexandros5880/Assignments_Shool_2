@@ -10,7 +10,7 @@ namespace Assignments_Shool_2
     {
         static void Main(string[] args)
         {
-
+            School school = new School();
             while (true)
             {
                 Console.WriteLine("Import(i) ? Export(e) ? Edit(ed) ? Quit(q):");
@@ -65,16 +65,16 @@ namespace Assignments_Shool_2
                     switch (choice)
                     {
                         case "ls":
-                            //Student.GetAllTerminal();
+                            school.PrintStudents();
                             break;
                         case "lt":
-                            //Trainer.GetAllTerminal();
+                            school.PrintTrainers();
                             break;
                         case "la":
-                            //Assignment.GetAllTerminal();
+                            school.PrintAssignments();
                             break;
                         case "lc":
-                            //Course.GetAllTerminal();
+                            school.PrintCourses();
                             break;
                         case "lsc":
                             //Course.GetAllStudentsTerminal();

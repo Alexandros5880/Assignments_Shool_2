@@ -10,17 +10,17 @@ namespace Assignments_Shool_2
     {
         public String Name { get; set; }
 
-        public List<Course> courses { get; set; }
-        public List<Assignment> assignments { get; set; }
-        public List<Trainer> trainers { get; set; }
-        public List<Student> students { get; set; }
+        public List<Course> Courses { get; set; }
+        public List<Assignment> Assignments { get; set; }
+        public List<Trainer> Trainers { get; set; }
+        public List<Student> Students { get; set; }
 
         public School()
         {
-            this.courses = new List<Course>();
-            this.assignments = new List<Assignment>();
-            this.trainers = new List<Trainer>();
-            this.students = new List<Student>();
+            this.Courses = new List<Course>();
+            this.Assignments = new List<Assignment>();
+            this.Trainers = new List<Trainer>();
+            this.Students = new List<Student>();
         }
 
         public bool AddCourse()
@@ -29,8 +29,8 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Course Name: ");
                 string name = Console.ReadLine();
-                Course course = new Course(name, this.courses.Count);
-                this.courses.Add(course);
+                Course course = new Course(name, this.Courses.Count);
+                this.Courses.Add(course);
                 return true;
             }
             catch (Exception)
@@ -44,17 +44,17 @@ namespace Assignments_Shool_2
             try
             {
                 Console.WriteLine("Delete course by id:");
-                foreach(Course co in this.courses)
+                foreach(Course co in this.Courses)
                 {
                     Console.WriteLine(co.ToString());
                 }
                 Console.Write("Course Id: ");
                 int id = int.Parse(Console.ReadLine());
-                foreach (Course co in this.courses)
+                foreach (Course co in this.Courses)
                 {
                     if(co.Id == id)
                     {
-                        this.courses.Remove(co);
+                        this.Courses.Remove(co);
                     }
                 }
                 return true;
@@ -65,6 +65,51 @@ namespace Assignments_Shool_2
             }
         }
 
-
+        #region "Print All Students Per Course"
+        public void PrintStudentsPerCourse()
+        {
+            Console.WriteLine("Select course by id:");
+            this.PrintCourses();
+            int id = int.Parse(Console.ReadLine());
+            Course course = (from c in this.Courses where c.Id == id select c).FirstOrDefault();
+            course.PrintStudents();
+        }
+        #endregion
+        #region "Get All Students"
+        public void PrintStudents()
+        {
+            foreach(Student st in this.Students)
+            {
+                Console.WriteLine(st.ToString());
+            }
+        }
+        #endregion
+        #region "Get All Trainers"
+        public void PrintTrainers()
+        {
+            foreach (Trainer tr in this.Trainers)
+            {
+                Console.WriteLine(tr.ToString());
+            }
+        }
+        #endregion
+        #region "Get All Assignments"
+        public void PrintAssignments()
+        {
+            foreach (Assignment ass in this.Assignments)
+            {
+                Console.WriteLine(ass.ToString());
+            }
+        }
+        #endregion
+        #region "Get All Courses"
+        public void PrintCourses()
+        {
+            foreach (Course cr in this.Courses)
+            {
+                Console.WriteLine(cr.ToString());
+            }
+        }
+        #endregion
     }
 }
