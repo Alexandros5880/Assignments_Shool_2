@@ -28,6 +28,14 @@ namespace Assignments_Shool_2
             this.EndDate = end.AddMonths(-1);
         }
 
+        public void PrintAssignments()
+        {
+            foreach(Assignment ass in this.Assignments)
+            {
+                Console.WriteLine(ass.ToString());
+            }
+        }
+
         public void PrintStudents()
         {
             foreach (Student st in this.Students)

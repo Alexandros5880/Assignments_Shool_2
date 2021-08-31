@@ -77,7 +77,7 @@ namespace Assignments_Shool_2
                             school.PrintCourses();
                             break;
                         case "lsc":
-                            //Course.GetAllStudentsTerminal();
+                            school.PrintStudentsPerCourse();
                             break;
                         case "ltc":
                             //Course.GetAllTrainersTerminal();

@@ -10,16 +10,32 @@ namespace Assignments_Shool_2
     {
         public int Id { get; set; }
         public String Name { get; set; }
-        public List<Assignment> assignments { get; set; }
+        public List<Assignment> Assignments { get; set; }
 
-        public List<Course> courses { get; set; }
+        public List<Course> Courses { get; set; }
 
         public Student(string name, int id)
         {
             this.Name = name;
             this.Id = id;
-            this.assignments = new List<Assignment>();
-            this.courses = new List<Course>();
+            this.Assignments = new List<Assignment>();
+            this.Courses = new List<Course>();
+        }
+
+        public void PrintCourses()
+        {
+            foreach (Course course in this.Courses)
+            {
+                Console.WriteLine(course.ToString());
+            }
+        }
+
+        public void PrintAssignments()
+        {
+            foreach (Assignment ass in this.Assignments)
+            {
+                Console.WriteLine(ass.ToString());
+            }
         }
 
         public override string ToString()

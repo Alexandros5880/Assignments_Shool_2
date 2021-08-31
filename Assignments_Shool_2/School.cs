@@ -65,6 +65,26 @@ namespace Assignments_Shool_2
             }
         }
 
+        #region "Print All Assignments Per Student"
+        public void PrintAssignmentsPerStudent()
+        {
+            Console.WriteLine("Select student by id:");
+            this.PrintStudents();
+            int id = int.Parse(Console.ReadLine());
+            Student student = (from s in this.Students where s.Id == id select s).FirstOrDefault();
+            student.PrintAssignments();
+        }
+        #endregion
+        #region "Print All Assignments Per Course"
+        public void PrintAssignmentsPerCourse()
+        {
+            Console.WriteLine("Select course by id:");
+            this.PrintCourses();
+            int id = int.Parse(Console.ReadLine());
+            Course course = (from c in this.Courses where c.Id == id select c).FirstOrDefault();
+            course.PrintAssignments();
+        }
+        #endregion
         #region "Print All Students Per Course"
         public void PrintStudentsPerCourse()
         {

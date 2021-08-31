@@ -10,9 +10,9 @@ If the user decides not to type any data,the program should use synthetic data[5
 - [x] *A list of all the courses [5 marks]*
 - [x] *All the students per course [10 marks]*
 - [x] *HINT:Make a new class that contains the students within a course All the trainers per course [10 marks]*
-- [ ] *HINT: As above All the assignments per course [10 marks]*
-- [ ] *HINT: As above All the assignments per student [10 marks]*
-- [ ] *HINT:You need to relate a student per course and per assignment
+- [x] *HINT: As above All the assignments per course [10 marks]*
+- [x] *HINT: As above All the assignments per student [10 marks]*
+- [x] *HINT:You need to relate a student per course and per assignment
 A list of students that belong to more than one courses [10 marks]*
 - [ ] *Lastly, the program should ask from the user a date and it should output a 
 list of students who need to submit one or more assignments 
