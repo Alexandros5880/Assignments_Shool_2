@@ -32,7 +32,6 @@ namespace Assignments_Shool_2
                 Console.WriteLine("Enter a valid name!");
             }
         }
-
         public override string ToString()
         {
             return $"Trainer: [ID: {this.Id}]  Name: {this.Name}";

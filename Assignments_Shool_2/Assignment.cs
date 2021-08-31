@@ -47,8 +47,30 @@ namespace Assignments_Shool_2
                             }
                             break;
                         case "sd":
+                            Console.WriteLine("Edit StartDate:");
+                            Console.Write("Enter a Date Like (27/07/2021):");
+                            DateTime startdate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                            if (startdate > DateTime.Today.AddMonths(-3))
+                            {
+                                this.StartDate = startdate;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter a valid date!");
+                            }
                             break;
                         case "ed":
+                            Console.WriteLine("Edit EndDate:");
+                            Console.Write("Enter a Date Like (27/07/2021):");
+                            DateTime enddate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                            if (enddate > DateTime.Today.AddDays(3))
+                            {
+                                this.StartDate = enddate;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter a valid date!");
+                            }
                             break;
                         default:
                             Console.WriteLine("Enter a valid choice!");
