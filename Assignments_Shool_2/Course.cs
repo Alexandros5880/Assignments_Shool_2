@@ -29,6 +29,18 @@ namespace Assignments_Shool_2
             DateTime end = DateTime.Today;
             this.EndDate = end.AddMonths(-1);
         }
+        public Course(string name, int id, School school, DateTime enddate)
+        {
+            this.Name = name;
+            this.Id = id;
+            this.school = school;
+            this.Trainers = new List<Trainer>();
+            this.Students = new List<Student>();
+            this.Assignments = new List<Assignment>();
+            this.StartDate = DateTime.Today;
+            this.EndDate = enddate;
+            Console.WriteLine($"EndDate: {this.EndDate}");
+        }
         public void Edit()
         {
             Console.WriteLine("Main Imfo(m) ? Related Data(r):");
@@ -56,7 +68,9 @@ namespace Assignments_Shool_2
                         case "sd":
                             Console.WriteLine("Edit StartDate:");
                             Console.Write("Enter a Date Like (27/07/2021):");
-                            DateTime startdate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                            String date = Console.ReadLine();
+                            String[] dates = date.Split('/');
+                            DateTime startdate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
                             if (startdate > DateTime.Today.AddMonths(-3))
                             {
                                 this.StartDate = startdate;
@@ -69,7 +83,9 @@ namespace Assignments_Shool_2
                         case "ed":
                             Console.WriteLine("Edit EndDate:");
                             Console.Write("Enter a Date Like (27/07/2021):");
-                            DateTime enddate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                            date = Console.ReadLine();
+                            dates = date.Split('/');
+                            DateTime enddate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
                             if (enddate > DateTime.Today.AddDays(3))
                             {
                                 this.StartDate = enddate;

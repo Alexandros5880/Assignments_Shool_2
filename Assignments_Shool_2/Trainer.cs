@@ -11,12 +11,14 @@ namespace Assignments_Shool_2
         public int Id { get; set; }
         public School school { get; set; }
         public String Name { get; set; }
+        public DateTime StartDate { get; set; }
 
         public Trainer(string name, int id, School school)
         {
             this.Name = name;
             this.Id = id;
             this.school = school;
+            this.StartDate = DateTime.Today;
         }
         public void Edit()
         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,9 +60,30 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Course Name: ");
                 string name = Console.ReadLine();
-                Course course = new Course(name, this.Courses.Count, this);
-                this.Courses.Add(course);
-                return true;
+                if(name.Length > 3)
+                {
+                    Console.WriteLine("Set the End Date:");
+                    Console.WriteLine($"example: {DateTime.Today.ToString("dd/MM/yyyy")}");
+                    String date = Console.ReadLine();
+                    String[] dates = date.Split('/');
+                    DateTime enddate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
+                    if (enddate > DateTime.Today)
+                    {
+                        Course course = new Course(name, this.Courses.Count, this, enddate);
+                        this.Courses.Add(course);
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Enter a Valid End Date! {enddate}\n");
+                        return false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter a Valid Name!\n");
+                    return false;
+                }
             }
             catch (Exception)
             {
@@ -77,9 +99,29 @@ namespace Assignments_Shool_2
             {
                 Console.Write("Assignment Name: ");
                 string name = Console.ReadLine();
-                Assignment assignment = new Assignment(name, this.Assignments.Count, this);
-                this.Assignments.Add(assignment);
-                return true;
+                if(name.Length > 3)
+                {
+                    Console.WriteLine("Set the End Date:");
+                    Console.WriteLine($"example: {DateTime.Today.ToString("dd/MM/yyyy")}");
+                    String date = Console.ReadLine();
+                    String[] dates = date.Split('/');
+                    DateTime enddate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
+                    if (enddate > DateTime.Today)
+                    {
+                        Assignment assignment = new Assignment(name, this.Assignments.Count, this, enddate);
+                        this.Assignments.Add(assignment);
+                        return true;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Enter a Valid End Date! {enddate}\n");
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {

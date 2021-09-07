@@ -14,6 +14,8 @@ namespace Assignments_Shool_2
         public List<Assignment> Assignments { get; set; }
         public List<Course> Courses { get; set; }
 
+        public DateTime StartDate { get; set; }
+
         public Student(string name, int id, School school)
         {
             this.Name = name;
@@ -21,6 +23,7 @@ namespace Assignments_Shool_2
             this.school = school;
             this.Assignments = new List<Assignment>();
             this.Courses = new List<Course>();
+            this.StartDate = DateTime.Today;
         }
         public void Edit()
         {
