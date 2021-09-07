@@ -10,6 +10,9 @@ namespace Assignments_Shool_1
     {
         static void Main(string[] args)
         {
+            AddTestRecords testRecords = new AddTestRecords();
+            testRecords.AddRecords();
+
             while (true)
             {
                 Console.WriteLine("Import(i) ? Export(e) ? Edit(ed) ? Quit(q):");

@@ -74,7 +74,9 @@ namespace Assignments_Shool_1
                     {
                         Console.WriteLine("Set the End Date:");
                         Console.WriteLine($"example: {DateTime.Today.ToString("dd/MM/yyyy")}");
-                        enddate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                        String date = Console.ReadLine();
+                        String[] dates = date.Split('/');
+                        enddate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
                         if (enddate > DateTime.Today)
                         {
                             check = false;
@@ -336,7 +338,9 @@ namespace Assignments_Shool_1
                             break;
                         case "ed":
                             Console.Write("Enter a Date Like (27/07/2021):");
-                            DateTime enddate = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+                            String date = Console.ReadLine();
+                            String[] dates = date.Split('/');
+                            DateTime enddate = new DateTime(int.Parse(dates[2]), int.Parse(dates[0]), int.Parse(dates[1]), 0, 0, 0);
                             if (enddate > DateTime.Today)
                             {
                                 course.EndDate = enddate;
