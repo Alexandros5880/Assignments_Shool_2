@@ -365,60 +365,72 @@ namespace Assignments_Shool_1
         // Get All Students On Terminal
         public static void GetAllStudentsTerminal()
         {
-            Console.WriteLine("\nGet Course Students:");
-            Console.Write("Course Title: ");
-            string title = Console.ReadLine();
-            if (title.Length > 0)
+            Console.WriteLine("\nGet Course Students By Index:");
+            for(int i=0; i < Courses.Count; i++)
             {
-                Course course = Course.Get(title);
+                Console.WriteLine($"{Courses[i].Title}  Index: [{i}]");
+            }
+            Console.Write("Course Index: ");
+            try
+            {
+                int index = int.Parse(Console.ReadLine());
+                Course course = Courses[index];
                 foreach (Student student in course.Students)
                 {
                     Console.WriteLine($"Student: FirstName: [{student.FirstName}]  LastName: [{student.LastName}]  " +
                                             $"Age: [{student.Age}]  Gende: [{student.Gender}]  StartDate: [{student.StartDate}]");
                 }
             }
-            else
+            catch(Exception)
             {
-                Console.WriteLine("Enter a Title Please!");
+                Console.WriteLine("Enter right Index Number!");
             }
         }
         // Get All Trainers On Terminal
         public static void GetAllTrainersTerminal()
         {
-            Console.WriteLine("\nGet Course Trainers:");
-            Console.Write("Course Title: ");
-            string title = Console.ReadLine();
-            if (title.Length > 0)
+            Console.WriteLine("\nGet Course Trainers By Index:");
+            for (int i = 0; i < Courses.Count; i++)
             {
-                Course course = Course.Get(title);
+                Console.WriteLine($"{Courses[i].Title}  Index: [{i}]");
+            }
+            Console.Write("Course Index: ");
+            try
+            {
+                int index = int.Parse(Console.ReadLine());
+                Course course = Courses[index];
                 foreach (Trainer trainer in course.Trainers)
                 {
                     Console.WriteLine($"Trainer: FirstName: [{trainer.FirstName}]  LastName: [{trainer.LastName}]  " +
                                             $"Age: [{trainer.Age}]  Gende: [{trainer.Gender}]  StartDate: [{trainer.StartDate}]");
                 }
             }
-            else
+            catch (Exception)
             {
-                Console.WriteLine("Enter a Title Please!");
+                Console.WriteLine("Enter right Index Number!");
             }
         }
         // Get All Assignments On Terminal
         public static void GetAllAssignmentsTerminal()
         {
-            Console.WriteLine("\nGet Course Assignments:");
-            Console.Write("Course Title: ");
-            string title = Console.ReadLine();
-            if (title.Length > 0)
+            Console.WriteLine("\nGet Course Students By Index:");
+            for (int i = 0; i < Courses.Count; i++)
             {
-                Course course = Course.Get(title);
+                Console.WriteLine($"{Courses[i].Title}  Index: [{i}]");
+            }
+            Console.Write("Course Index: ");
+            try
+            {
+                int index = int.Parse(Console.ReadLine());
+                Course course = Courses[index];
                 foreach (Assignment assignment in course.Assignments)
                 {
                     Console.WriteLine($"Assignment Title: [{assignment.Title}]  StartDate: [{assignment.StartDate}]  EndDate: [{assignment.EndDate}]");
                 }
             }
-            else
+            catch (Exception)
             {
-                Console.WriteLine("Enter a Title Please!");
+                Console.WriteLine("Enter right Index Number!");
             }
         }
         // Get All Course On Terminal
