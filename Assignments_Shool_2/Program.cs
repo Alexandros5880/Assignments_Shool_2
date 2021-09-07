@@ -11,6 +11,10 @@ namespace Assignments_Shool_2
         static void Main(string[] args)
         {
             School school = new School();
+
+            AddTestRecords testRecords = new AddTestRecords(school);
+            testRecords.AddRecords();
+
             while (true)
             {
                 Console.WriteLine("Import(i) ? Export(e) ? Edit(ed) ? Quit(q):");
