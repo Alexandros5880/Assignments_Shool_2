@@ -8,6 +8,7 @@ namespace Assignments_Shool_1
 {
     class Trainer : People
     {
+        public int Id { get; set; }
         public List<Course> Courses { get; set; }
         public static List<Trainer> Trainers = new List<Trainer>();
 
@@ -16,7 +17,11 @@ namespace Assignments_Shool_1
                             base(firstname, lastname, age, gender, startdate)
         {
             this.Courses = new List<Course>();
-            Trainer.Trainers.Add(this);
+            this.Id = Trainer.Trainers.Count;
+            if(!Trainer.Trainers.Contains(this))
+            {
+                Trainer.Trainers.Add(this);
+            }
         }
         ~Trainer()
         {
@@ -32,20 +37,38 @@ namespace Assignments_Shool_1
         // Add Trainer
         public static void Add(string firstname, string lastname, int age, string gender, DateTime startdate)
         {
-            Console.WriteLine("Importing Trainer.");
             Trainer trainer = new Trainer(firstname, lastname, age, gender, startdate);
-            // Save It To DB
-            ///
+            trainer.Id = Trainer.Trainers.Count;
+            if (!Trainer.Trainers.Contains(trainer))
+            {
+                Trainer.Trainers.Add(trainer);
+            }
         }
-        // Get Trainer
+        // Get Trainer By Name
         public static Trainer Get(string firstname, string lastname)
         {
             try
             {
                 IEnumerable<Trainer> traners = from trainer in Trainer.Trainers
-                                               where
-              trainer.FirstName == firstname &&
-              trainer.LastName == lastname
+                                               where trainer.FirstName == firstname
+                                               where trainer.LastName == lastname
+                                               select trainer;
+
+                return (Trainer)traners.ToList().First();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\n\n {ex.Message} \n\n");
+                return null;
+            }
+        }
+        // Get Trainer By Id
+        public static Trainer Get(int id)
+        {
+            try
+            {
+                IEnumerable<Trainer> traners = from trainer in Trainer.Trainers
+                                               where trainer.Id == id
                                                select trainer;
 
                 return (Trainer)traners.ToList().First();
@@ -125,17 +148,33 @@ namespace Assignments_Shool_1
         // Terminal Edit a Trainer
         public static void TerminalEdit()
         {
-            Console.Write("\nPlease Enter Trainers FirstName: ");
-            string firstname = Console.ReadLine();
-            Console.Write("\nPlease Enter Trainers LastName: ");
-            string lastname = Console.ReadLine();
-            int age = 0;
-            string gender = "";
-            if (firstname.Length > 0 && lastname.Length > 0)
+            bool check = false;
+            // Select Trainer
+            Trainer trainer;
+            int tr_id = 0;
+            Console.WriteLine("\nSelect Trainer By Id:");
+            foreach (Trainer tr in Trainer.Trainers)
             {
-                Trainer trainer = Trainer.Get(firstname, lastname);
-                age = trainer.Age;
-                gender = trainer.Gender;
+                Console.WriteLine(tr.ToString());
+            }
+            Console.Write("ID: ");
+            try
+            {
+                tr_id = int.Parse(Console.ReadLine());
+                check = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Enter right id!");
+                check = false;
+            }
+            if (check)
+            {
+                trainer = (from t in Trainer.Trainers where t.Id == tr_id select t).FirstOrDefault();
+                int age = trainer.Age;
+                string gender = trainer.Gender;
+                string firstname = trainer.FirstName;
+                string lastname = trainer.LastName;
                 string edit_choice = "";
                 while (!edit_choice.Equals("q"))
                 {
@@ -168,10 +207,6 @@ namespace Assignments_Shool_1
                 trainer.Age = age;
                 trainer.Gender = gender;
             }
-            else
-            {
-                Console.WriteLine("Enter FirstName AND LastName Please!");
-            }
         }
         // Get All Traines On Terminal
         public static new bool GetAllTerminal()
@@ -183,8 +218,7 @@ namespace Assignments_Shool_1
                     int counter = 0;
                     foreach (Trainer trainer in Trainer.Trainers)
                     {
-                        Console.WriteLine($"Trainer: Id: [{counter}] FirstName: [{trainer.FirstName}]  LastName: [{trainer.LastName}]  " +
-                            $"Age: [{trainer.Age}]  Gende: [{trainer.Gender}]  StartDate: [{trainer.StartDate}]");
+                        Console.WriteLine(trainer.ToString());
                         counter++;
                     }
                     return true;
@@ -200,6 +234,11 @@ namespace Assignments_Shool_1
                 Console.WriteLine($"Exception: {ex}");
                 return false;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Trainer: ID[{this.Id}] Name:[{this.LastName} { this.FirstName}] Age: [{this.Age}] Gende: [{this.Gender}] StartDate: [{this.StartDate}]";
         }
     }
 }

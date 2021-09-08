@@ -8,6 +8,7 @@ namespace Assignments_Shool_1
 {
     class Student : People
     {
+        public int Id { get; set; }
         public List<Assignment> Assignments { get; set; }
         public List<Course> Courses { get; set; }
         public static List<Student> Students = new List<Student>();
@@ -18,7 +19,11 @@ namespace Assignments_Shool_1
         {
             this.Assignments = new List<Assignment>();
             this.Courses = new List<Course>();
-            Student.Students.Add(this);
+            this.Id = Student.Students.Count;
+            if (!Student.Students.Contains(this))
+            {
+                Student.Students.Add(this);
+            }
         }
         ~Student()
         {
@@ -41,19 +46,37 @@ namespace Assignments_Shool_1
         // Add Student
         public static void Add(string firstname, string lastname, int age, string gender, DateTime startdate)
         {
-            Console.WriteLine("Importing Student.");
             Student student = new Student(firstname, lastname, age, gender, startdate);
-            // Save It To DB
-            ///
+            student.Id = Student.Students.Count;
+            if (!Student.Students.Contains(student))
+            {
+                Student.Students.Add(student);
+            }
         }
-        // Get Student
+        // Get Student By Name
         public static Student Get(string firstname, string lastname)
         {
             try
             {
                 IEnumerable<Student> students = from student in Student.Students
                                                 where student.FirstName == firstname
-                                                && student.LastName == lastname
+                                                where student.LastName == lastname
+                                                select student;
+                return (Student)students.ToList().First();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\n\n {ex.Message} \n\n");
+                return null;
+            }
+        }
+        // Get Student By Id
+        public static Student Get(int id)
+        {
+            try
+            {
+                IEnumerable<Student> students = from student in Student.Students
+                                                where student.Id == id
                                                 select student;
                 return (Student)students.ToList().First();
             }
@@ -132,17 +155,33 @@ namespace Assignments_Shool_1
         // Terminal Edit a Student
         public static void TerminalEdit()
         {
-            Console.Write("\nPlease Enter Students FirstName: ");
-            string firstname = Console.ReadLine();
-            Console.Write("\nPlease Enter Students LastName: ");
-            string lastname = Console.ReadLine();
-            int age = 0;
-            string gender = "";
-            if (firstname.Length > 0 && lastname.Length > 0)
+            bool check = false;
+            // Select Student
+            Student student;
+            int st_id = 0;
+            Console.WriteLine("\nSelect Student By Id:");
+            foreach (Student st in Student.Students)
             {
-                Student student = Student.Get(firstname, lastname);
-                age = student.Age;
-                gender = student.Gender;
+                Console.WriteLine(st.ToString());
+            }
+            Console.Write("ID: ");
+            try
+            {
+                st_id = int.Parse(Console.ReadLine());
+                check = true;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Enter right id!");
+                check = false;
+            }
+            if (check)
+            {
+                student = (from s in Student.Students where s.Id == st_id select s).FirstOrDefault();
+                int age = student.Age;
+                string gender = student.Gender;
+                string firstname = student.FirstName;
+                string lastname = student.LastName;
                 string edit_choice = "";
                 while (!edit_choice.Equals("q"))
                 {
@@ -175,30 +214,28 @@ namespace Assignments_Shool_1
                 student.Age = age;
                 student.Gender = gender;
             }
-            else
-            {
-                Console.WriteLine("Enter FirstName AND LastName Please!");
-            }
         }
         // Get All Assignments on Terminal
         public static void GetAllAssignmentsTerminal()
         {
-            Console.WriteLine("\nGet All Assignments");
-            Console.Write("Students FirstName: ");
-            string firstname = Console.ReadLine();
-            Console.Write("Students LastName: ");
-            string lastname = Console.ReadLine();
-            if (firstname.Length > 0 && lastname.Length > 0)
+            Console.WriteLine("\nSelect Student By Index:");
+            for (int i = 0; i < Students.Count; i++)
             {
-                Student student = Student.Get(firstname, lastname);
+                Console.WriteLine($"{Students[i].LastName} {Students[i].FirstName}  Index: [{i}]");
+            }
+            Console.Write("Student Index: ");
+            try
+            {
+                int index = int.Parse(Console.ReadLine());
+                Student student = Students[index];
                 foreach (Assignment assignment in student.Assignments)
                 {
-                    Console.WriteLine($"Assignment Title: [{assignment.Title}]  StartDate: [{assignment.StartDate}]  EndDate: [{assignment.EndDate}]");
+                    Console.WriteLine($"Assignment Title: [{assignment.Title}] StartDate: [{assignment.StartDate}] EndDate: [{assignment.EndDate}]");
                 }
             }
-            else
+            catch (Exception)
             {
-                Console.WriteLine("Please Enter FistName AND LastName!");
+                Console.WriteLine("Enter right Index Number!");
             }
         }
         // Get All Students That Belong To More That One Course
@@ -209,8 +246,8 @@ namespace Assignments_Shool_1
             {
                 if (student.Courses.Count > 1)
                 {
-                    Console.WriteLine($"Student: FirstName: [{student.FirstName}]  LastName: [{student.LastName}]  " +
-                                            $"Age: [{student.Age}]  Gende: [{student.Gender}]  StartDate: [{student.StartDate}]");
+                    Console.WriteLine($"Student: FirstName: [{student.FirstName}] LastName: [{student.LastName}] " +
+                                            $"Age: [{student.Age}] Gende: [{student.Gender}] StartDate: [{student.StartDate}]");
                 }
             }
         }
@@ -254,8 +291,7 @@ namespace Assignments_Shool_1
                     int counter = 0;
                     foreach (Student student in Student.Students)
                     {
-                        Console.WriteLine($"Student: Id: [{counter}] FirstName: [{student.FirstName}]  LastName: [{student.LastName}]  " +
-                                            $"Age: [{student.Age}]  Gende: [{student.Gender}]  StartDate: [{student.StartDate}]");
+                        Console.WriteLine(student.ToString());
                         counter++;
                     }
                     return true;
@@ -271,6 +307,11 @@ namespace Assignments_Shool_1
                 Console.WriteLine($"Exception: {ex}");
                 return false;
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Student: ID[{this.Id}] Name:[{this.LastName} { this.FirstName}] Age: [{this.Age}] Gende: [{this.Gender}] StartDate: [{this.StartDate}]";
         }
     }
 }
